@@ -8,11 +8,17 @@ require 'csv'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Answer.delete_all
+Question.delete_all
+Quiz.delete_all
+User.delete_all
+Result.delete_all
+
 def create_question(row, quiz)
   Question.create({
     text: row['Question'],
     quiz_id: quiz.id
-    })
+  })
 end
 
 def create_answer(row, index, question)
@@ -20,12 +26,12 @@ def create_answer(row, index, question)
     text: row[index],
     points: row.headers[index].to_i,
     question_id: question.id
-    })
+  })
 end
 
 quiz = Quiz.create({
   name: "Float Quiz"
-  })
+})
 
 CSV.foreach(Rails.root.join('db', 'data', 'quiz.csv'), :headers => true) do |row|
   question = create_question(row, quiz)
