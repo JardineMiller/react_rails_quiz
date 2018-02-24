@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import QuizContainer from './containers/QuizContainer';
 
 class App extends Component {
   render() {
     return (
-      <h1>Hello World!</h1>
+      <QuizContainer />
     );
   }
 }
