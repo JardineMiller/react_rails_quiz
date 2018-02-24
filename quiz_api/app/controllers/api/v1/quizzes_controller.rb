@@ -3,7 +3,31 @@ module Api::V1
 
     def index
       @quizzes = Quiz.all
-      render json: @quizzes
+      options = {
+        include: {
+          questions: {
+            include: {
+              answers: {}
+            }
+          }
+        }
+      }
+
+      render json: @quizzes.as_json(options)
+    end
+
+    def show
+      @quiz = Quiz.find(params[:id])
+      options = {
+        include: {
+          questions: {
+            include: {
+              answers: {}
+            }
+          }
+        }
+      }
+      render json: @quiz.as_json(options)
     end
     
   end
