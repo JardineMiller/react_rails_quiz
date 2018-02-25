@@ -2,7 +2,8 @@ const Request = function(url) {
   this.url = url;
 }
 
-Request.prototype.get = () => {
+Request.prototype.get = function() {
+  // console.log(this.url);
   let xhr = new XMLHttpRequest();
   xhr.open('GET', this.url);
   xhr.addEventListener('load', () => {
@@ -16,8 +17,8 @@ Request.prototype.post = function(body) {
   xhr.open('POST', this.url);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.addEventListener('load', function() {
-    if(this.status != 201) return;
-    const responseBody = JSON.parse(this.responseText);
+    if(this.status !== 201) return;
+    JSON.parse(this.responseText);
   })
   xhr.send(JSON.stringify(body));
 };
@@ -26,7 +27,7 @@ Request.prototype.delete = function() {
   let xhr = new XMLHttpRequest();
   xhr.open('DELETE', this.url);
   xhr.addEventListener('load', function() {
-    if(this.status != 204) return;
+    if(this.status !== 204) return;
   })
   xhr.send();
 };
@@ -36,7 +37,7 @@ Request.prototype.put = function(body) {
   xhr.open('PUT', this.url);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.addEventListener('load', function() {
-    if(this.status != 200) return;
+    if(this.status !== 200) return;
   })
   xhr.send(JSON.stringify(body));
 };

@@ -11,7 +11,8 @@ class QuizContainer extends Component {
   }
 
   componentDidMount() {
-    
+    let request = new Request('http://localhost:3001/api/v1/quizzes/2');
+    request.get();
   }
 
   render() {
