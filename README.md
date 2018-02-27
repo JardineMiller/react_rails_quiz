@@ -27,7 +27,7 @@ Start rails server
 rails s -p 3001
 ```
 
-Enter react director and install dependencies
+Open up a new terminal tab (cmd + t) and enter react directory and install dependencies
 ```
 cd ../quiz_react && npm install
 ```
