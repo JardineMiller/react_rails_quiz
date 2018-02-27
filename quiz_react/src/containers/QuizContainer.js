@@ -8,11 +8,14 @@ class QuizContainer extends Component {
     this.state = {
       name: null,
       score: 0,
+      maxScore: 0,
       questions: [],
       currentQuestion: null,
       currentQuestionCount: null,
+      complete: false
     }
-
+    this.initialState = this.state;
+    this.reset = this.reset.bind(this);
     this.init = this.init.bind(this);
     this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
     this.updateScore = this.updateScore.bind(this);
@@ -23,20 +26,24 @@ class QuizContainer extends Component {
     request.get(this.init);
   }
 
+  reset() {
+    this.setState(this.initialState);
+    this.componentDidMount()
+  }
+
   init(quiz) {
     this.setState({
       name: quiz.name,
       questions: quiz.questions,
       currentQuestion: quiz.questions[0],
       currentQuestionCount: 1,
+      maxScore: quiz.questions[0].answers[0].points * quiz.questions.length
     })
   }
 
   updateScore(answerScore) {
-    console.log(typeof answerScore);
-
     this.setState((prevState) => {
-      return {score: prevState.score += parseInt(answerScore)}
+      return {score: prevState.score += parseInt(answerScore, 10)}
     })
   }
 
@@ -44,12 +51,19 @@ class QuizContainer extends Component {
     let questions = this.state.questions;
     let currentQuestion = this.state.currentQuestion;
     let index = questions.indexOf(currentQuestion);
-    if(index === questions.length - 1) return console.log('Well done!');
+    if(index === questions.length - 1) {
+      this.setState({
+        complete: true
+      })
+      return;
+    }
     if(index < questions.length) {
       index++;
-      this.setState({
-        currentQuestion: questions[index],
-        currentQuestionCount: index + 1
+      this.setState((prevState) => {
+        return {
+          currentQuestion: questions[index],
+          currentQuestionCount: prevState.currentQuestionCount += 1
+        }
       })
     }
   }
@@ -64,6 +78,9 @@ class QuizContainer extends Component {
       name={this.state.name} 
       total={this.state.questions.length} 
       question={this.state.currentQuestion} 
+      complete={this.state.complete}
+      maxScore={this.state.maxScore}
+      reset={this.reset}
       />
       )
   }
