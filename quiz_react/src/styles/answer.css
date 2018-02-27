@@ -1,0 +1,42 @@
+.answers {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.answers li {
+  background-color: #fff;
+  min-height: 3rem;
+  width: 49%;
+  margin: 0.5% 0.25%;
+  display: flex;
+  cursor: pointer;
+  transition: all .3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.answers li:hover {
+  box-shadow: 0 3px 7px rgba(0,0,0,0.25), 0 3px 3px rgba(0,0,0,0.22);
+}
+
+.answers li span {
+  z-index: 1;
+  background-color: #4405f7;
+  color: #ededed;
+  font-size: 2.5em;
+  font-weight: 300;
+  padding: 0.2em 0.4em;
+  justify-content: center;
+  align-items: center;
+}
+
+.answers li p {
+  /*color: #4405f7;*/
+  font-size: 1.1em;
+  font-weight: 300;
+  margin: auto;
+}

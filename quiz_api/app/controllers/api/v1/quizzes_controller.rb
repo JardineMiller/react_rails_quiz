@@ -6,13 +6,10 @@ module Api::V1
       options = {
         include: {
           questions: {
-            include: {
-              answers: {}
-            }
+            include: :answers
           }
         }
       }
-
       render json: @quizzes.as_json(options)
     end
 
@@ -21,9 +18,7 @@ module Api::V1
       options = {
         include: {
           questions: {
-            include: {
-              answers: {}
-            }
+            include: :answers
           }
         }
       }
