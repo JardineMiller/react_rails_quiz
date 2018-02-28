@@ -15,6 +15,10 @@ function Quiz(props) {
     props.onAnswerClick(score);
   }
 
+  function sendName(name) {
+    props.setName(name);
+  }
+
   function onNextButtonClick() {
     props.onNextButtonClick();
   }
@@ -25,7 +29,7 @@ function Quiz(props) {
 
   return (
     <div className="quiz-container">
-      <Welcome />
+      {!props.user && <Welcome submitName={sendName} />}
       <div className="quiz">
         <h2 className="quiz-name">{props.name}</h2>
         <QuestionCount counter={props.count} total={props.total}/>

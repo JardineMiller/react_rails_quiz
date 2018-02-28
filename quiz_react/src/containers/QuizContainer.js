@@ -20,6 +20,13 @@ class QuizContainer extends Component {
     this.init = this.init.bind(this);
     this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
     this.updateScore = this.updateScore.bind(this);
+    this.setName = this.setName.bind(this);
+  }
+
+  setName(name) {
+    this.setState({
+      user: name
+    })
   }
 
   componentDidMount() {
@@ -72,6 +79,8 @@ class QuizContainer extends Component {
   render() {
     return (
       <Quiz 
+      setName={this.setName}
+      user={this.state.user}
       score={this.state.score}
       onAnswerClick={this.updateScore}
       onNextButtonClick={this.handleNextButtonClick} 
