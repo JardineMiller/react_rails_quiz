@@ -5,7 +5,7 @@ function PopUp(props) {
   return (
     <div className="overlay">
       <div className="card">
-        <h4>Thank you for completing the quiz!</h4>
+        <h4>Thank you, {props.user}, for completing the quiz!</h4>
         <p>You scored {props.score} out of {props.maxScore}</p>
         <button className="button-small" onClick={restart}>Restart</button>
       </div>

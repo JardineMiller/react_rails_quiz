@@ -37,7 +37,7 @@ function Quiz(props) {
         <Question question={question} />
         <Answer onNextClick={onNextButtonClick} onAnswerClick={sendScore} answers={question.answers}/>
       </div>
-      {props.complete && <PopUp onReset={onResetClick} score={props.score} maxScore={props.maxScore}/>}
+      {props.complete && <PopUp user={props.user} onReset={onResetClick} score={props.score} maxScore={props.maxScore}/>}
     </div>
     )
 }
