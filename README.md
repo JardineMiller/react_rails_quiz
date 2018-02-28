@@ -17,6 +17,11 @@ Enter API directory and install dependencies
 cd quiz_api && bundle install
 ```
 
+Seed the database
+```
+rails db:migrate && rails db:seed
+```
+
 For testing:
 ```
 rails test
