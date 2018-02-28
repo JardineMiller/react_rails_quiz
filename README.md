@@ -19,7 +19,7 @@ cd quiz_api && bundle install
 
 Seed the database
 ```
-rails db:migrate && rails db:seed
+rails db:drop && rails db:create && rails db:migrate && rails db:seed
 ```
 
 For testing:
