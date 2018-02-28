@@ -4,6 +4,7 @@ import QuestionCount from './QuestionCount.js';
 import ScoreCount from './ScoreCount.js';
 import Answer from './Answer.js';
 import PopUp from './PopUp.js';
+import Welcome from './Welcome.js';
 import '../styles/quiz.css';
 
 function Quiz(props) {
@@ -24,6 +25,7 @@ function Quiz(props) {
 
   return (
     <div className="quiz-container">
+      <Welcome />
       <div className="quiz">
         <h2 className="quiz-name">{props.name}</h2>
         <QuestionCount counter={props.count} total={props.total}/>

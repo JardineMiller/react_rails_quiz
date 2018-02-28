@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AnswerTest < ActiveSupport::TestCase
 
-  test "Answers belongs to a question" do
+  test "Answer belongs to a question" do
     assert_equal(answers(:one).question, questions(:one))
   end
 

@@ -6,6 +6,7 @@ class QuizContainer extends Component {
   constructor() {
     super();
     this.state = {
+      user: null,
       name: null,
       score: 0,
       maxScore: 0,
